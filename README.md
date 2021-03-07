@@ -2,7 +2,7 @@
 I will use this repository to track my forays in to spatial analysis using python.
 
 ## Arc GIS Pro Tools
-These are simple tools i created to perform common aptial analysis and manipulation tasks for Arc GIS Pro. 
+These are simple tools I created to perform common spatial analysis and manipulation tasks for Arc GIS Pro. 
  
 ## Social Vulnerability Analysis
 This is a social vulnerability analysis for county census tracts in the Portland Metro Statistical Area using open source python including pandas, geopandas, and matplotlib. Demographic data was obtained from https://opendata.imspdx.org/ and census tract geographic datd was obtained from Oregon Metro. The resulting maps were created with matplotlib:
@@ -24,3 +24,7 @@ This is a social vulnerability analysis for county census tracts in the Portland
 
 ## Custom_DEM_Toolbox
 This a custom python toolbox that can be used in either Arc GIS Pro or Arc Map. The toolbox was created to automate a step in a custom digital elevation model creation workflow. This tool takes a polyline feature as input and outputs a point feature class with z-values for each feature based on a slope calculated from the input elevations. The points are always downward trending so the user should adjust the directionality of the polyline accordingly. To use this file in Arc GIS Pro, download and save as a .pyt file.
+
+## LCEP_PublicLandOwnership
+These are a collection of scripts documenting the methods I used in a land onwership analysis of the Lower Columbia floodplain. They are not applicable as standalone scripts and are meant nearly as a way to to document the methods/workflows used in the analysis. The resulting web map can be viewed at: 
+https://portlandcc.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=9e518b772da2422cbac13133c85267b1 
