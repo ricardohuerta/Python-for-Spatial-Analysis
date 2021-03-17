@@ -91,9 +91,11 @@ class PolylineToElevationPoints(object):
         """Modify the messages created by internal validation for each tool
         parameter.  This method is called after internal validation."""
         return
-
-
+               
+    
+    
     def execute(self, parameters, messages):
+        """The source code of the tool."""
         ### Workspace based on user input
         ws = parameters[0].valueAsText
         arcpy.env.workspace = ws
@@ -122,7 +124,7 @@ class PolylineToElevationPoints(object):
         arcpy.AddField_management(outputFC, 'z_value', 'FLOAT')
 
         ### Get unique Object ID's from original polyline fc
-        ORIG_FID_LIST = unique_values(polyline, 'OBJECTID')
+        ORIG_FID_LIST = self.unique_values(polyline, 'OBJECTID')
 
         ### Calculate slope and z-values for point feature class
         for FID in ORIG_FID_LIST:
@@ -135,7 +137,7 @@ class PolylineToElevationPoints(object):
             with arcpy.da.UpdateCursor(outputFC, [USelev, DSelev, 'z_value'], where_clause=where_clause) as cursor:
                 for row in cursor:
                     while slopeCalculated == False:
-                        slope = calculateSlope(float(row[0]), float(row[1]), featureCount)
+                        slope = self.calculateSlope(float(row[0]), float(row[1]), featureCount)
                         slopeCalculated = True
 
                     if row[0] > row[1]:
@@ -147,23 +149,22 @@ class PolylineToElevationPoints(object):
                         row[2] = float(row[1]) - float(slope * counter)
                         counter += 1
                         cursor.updateRow(row)
-
-    """The source code of the tool."""
-
+                        
+                        
+    # Define function to get unique values from a cursor
+    def unique_values(self, table, field):
+        with arcpy.da.SearchCursor(table, [field]) as cursor:
+            return sorted([row[0] for row in cursor])
+            
+    # Define a function to calculate the slope between two polyline endpoints
+    def calculateSlope(self, elev1, elev2, featureCount):
+            absolute = float(abs(elev1 - elev2))
+            slope = absolute / float(featureCount)
+            return slope
+    
 
     # End do_analysis function
 
 
-    # Define function to get unique values from a cursor
-    def unique_values(table, field):
-        with arcpy.da.SearchCursor(table, [field]) as cursor:
-            return sorted([row[0] for row in cursor])
-
-
-    # Define a function to calculate the slope between two polyline endpoints
-    def calculateSlope(elev1, elev2, featureCount):
-        absolute = float(abs(elev1 - elev2))
-        slope = absolute / float(featureCount)
-        return slope
 
 
