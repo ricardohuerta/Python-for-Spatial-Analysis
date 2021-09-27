@@ -2,7 +2,14 @@
 I will use this repository to track my forays in to spatial analysis using python.
 
 # AP_Tool
-This is a python toolbox developed for modelling wireless signal in outdoor environment. The tool can be implemented in ArcGIS Pro. 
+This is a python toolbox developed for modelling wireless signal in outdoor environment. The tool completes the following steps:
+
+1. Calculates visible areas based on a wirelss signal access point
+2. Calculates distance and Free Space Path Loss
+3. Calculates signal loss due to object interference
+4. Ouputs a raster representing signal power radiating from the input point
+
+This tool can be implemented in ArcGIS Pro. 
 
 ## Example outputs
 
