@@ -2,7 +2,7 @@
 I will use this repository to track my forays in to spatial analysis using python.
 
 ## Street Tree Inventory for the City of Wilsonville
-This a work-in progress data analysis for the street trees of Wilsonville. We collected all of the tree data through fieldwork and are currently working on assessing damage caused by the 2020 ice storm to the street trees of Wilsonville. I will continue to update this analysis as it proresses. Data visualization was completed with matplotlib and seaborn packages. Statistical analysis completed in pandas.
+This is a data analysis for the street trees of Wilsonville. We collected all of the tree data through fieldwork and assessed general street tree population and damage caused by the 2020 ice storm. Data visualization was completed with matplotlib and seaborn packages. Statistical analysis completed in pandas.
 
 ## Arc GIS Pro Tools
 These are simple tools I created to perform common spatial analysis and manipulation tasks for Arc GIS Pro. 
